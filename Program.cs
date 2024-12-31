@@ -26,7 +26,7 @@ void Oyun()
     Console.WriteLine("----------------------------Sayı Bulma Oyununa Hoşgeldiniz----------------------------");
     // rastgele sayı
     Random rastgele = new Random();
-    int sayi = rastgele.Next(1,100);
+    int sayi = rastgele.Next(1,101);
 
     int i = 0; // tahmin hakkı
 
@@ -76,23 +76,11 @@ void Oyun()
     } while(i < 4);
 
 
-    Console.WriteLine("Oyundan çıkılıyor..");
+    Console.WriteLine("Oyun bitti. Tekrar oynamak için programı yeniden başlatın!");
 }
 
-// Hesap Makinesi
-// Kullanıcıya ilk sayıyı girmesini isteyin.
-// Kullanıcıya ikinci sayıyı girmesini isteyin.
-// Kullanıcıya yapmak istediği işlemi seçmesini isteyin:
-// Toplama için +
-// Çıkarma için -
-// Çarpma için *
-// Bölme için /
-// Kullanıcının seçimine göre uygun işlemi gerçekleştirip sonucu ekrana yazdırın. Eğer bölme işlemi seçildiyse, sıfıra bölme hatası durumunu kontrol edin.
-// Programı yazarken dikkat etmeniz gereken noktalar:
-// Kullanıcı girdilerini doğru bir şekilde almak için Console.ReadLine() ve Convert.ToInt32() gibi metodları kullanın.
-// İşlem seçiminde if-else veya switch-case yapısını kullanarak uygun işlemi gerçekleştirin.
-// Bölme işlemi yapılırken sıfıra bölme hatasını kontrol edin ve kullanıcıya uygun bir mesaj gösterin.
 
+// hesap makinesi
 void HesapMakinesi()
 {
     Console.WriteLine("----------------------------Hesap Makinesine Hoşgeldiniz----------------------------");
@@ -158,22 +146,138 @@ void HesapMakinesi()
     }
 }
 
+// Ortalama Hesaplama
+// Kullanıcıdan birinci ders notunu girmesini isteyin.
+// Kullanıcıdan ikinci ders notunu girmesini isteyin.
+// Kullanıcıdan üçüncü ders notunu girmesini isteyin.
+// Girdiği notların ortalamasını hesaplayın ve ekrana yazdırın.
+// Notların geçerli olup olmadığını kontrol edin (0-100 aralığında olmalıdır). Geçersiz bir not girildiğinde kullanıcıya hata mesajı verin ve programı sonlandırın.
+// Ortalama notun harf karşılığını göstermek için aşağıdaki harf notu tablosunu kullanın:
+
+// 90-100: AA
+// 85-89:  BA
+// 80-84:  BB
+// 75-79:  CB +
+// 70-74:  CC +
+// 65-69:  DC +
+// 60-64:  DD +
+// 55-59:  FD +
+// 0-54:   FF
+// Programı yazarken dikkat etmeniz gereken noktalar:
+// Kullanıcı girdilerini doğru bir şekilde almak için Console.ReadLine() ve Convert.ToDouble() gibi metodları kullanın.
+// Notların geçerliliğini kontrol etmek için if yapısını kullanın.
+// Ortalama hesaplamasını doğru bir şekilde yapmak için double türünde bir değişken kullanın.
+// Harf notu tablosunu kullanarak kullanıcının aldığı ortalamaya karşılık gelen harf notunu belirleyin ve ekrana yazdırın.
+
+
+// ortalama hesaplama uygulaması
+void OrtalamaHesapla()
+{
+    Console.WriteLine("----------------------------Ortalama Hesaplamaya Hoşgeldiniz----------------------------");
+    
+    // ortalama not değişkeni
+    double ortalama_not = 0;
+    // not girişi durdurma değişkeni
+    int i = 0;
+    // notların harf karşılığını veren metot
+    string HarfNotuHesapla(double ortalama)
+    {
+        if (ortalama >= 90 && ortalama <= 100)     // 90-100: AA
+            return "AA";
+        else if (ortalama >= 85 && ortalama <= 89) // 85-89:  BA
+            return "BA";
+        else if (ortalama >= 84 && ortalama <= 80) // 80-84:  BB
+            return "BB";
+        else if (ortalama >= 75 && ortalama <= 79) // 75-79:  CB
+            return "CB";
+        else if (ortalama >= 70 && ortalama <= 74) // 70-74:  CC
+            return "CC";
+        else if (ortalama >= 65 && ortalama <= 69) // 65-69:  DC
+            return "DC";
+        else if (ortalama >= 60 && ortalama <= 64) // 60-64:  DD
+            return "DD";
+        else if (ortalama >= 55 && ortalama <= 59) // 55-59:  FD
+            return "FD";
+        else                                       // 0-54:   FF
+            return "FF";
+    }
+    // kullanıcının girdiği not 0-100 arası kontrolü
+    bool NotKontrol(int not)
+    {
+        return not >= 0 && not <= 100;
+    }
+
+    
+    // not 0-100 olmaz ise uygulama sonlandırılır
+    while (i == 0)
+    {
+        // kullanıcıdan 0-100 arası not alıyoruz
+        Console.WriteLine("Ortalamasını hesaplamak istediğiniz notları giriniz.");
+        Console.Write("Birinci not: ");
+        int not1 = Convert.ToInt32(Console.ReadLine());
+        if(!NotKontrol(not1))
+        {
+            Console.WriteLine("0-100 arasında not giriniz!!");
+            break;
+        }
+        
+        Console.Write("İkinci not: ");
+        int not2 = Convert.ToInt32(Console.ReadLine());
+        if(!NotKontrol(not2))
+        {
+            Console.WriteLine("0-100 arasında not giriniz!!");
+            break;
+        }
+
+        Console.Write("Üçüncü not: ");
+        int not3 = Convert.ToInt32(Console.ReadLine());
+        if(!NotKontrol(not3))
+        {
+            Console.WriteLine("0-100 arasında not giriniz!!");
+            break;
+        }
+
+        // not burada double dönüşümü yapıyor
+        ortalama_not = (double)(not1 + not2 + not3) / 3; 
+        Console.WriteLine($"Not ortalamanız: {ortalama_not}");
+        Console.WriteLine("--------------------");
+        i++;
+    }
+
+    // consola harf notunu yazdıracağız
+    while (i == 1)
+    {
+        string harf = HarfNotuHesapla(ortalama_not);
+        Console.WriteLine($"Not ortalamanız {ortalama_not} : {harf} ile değerlendirildi. Başarılar..");
+        break;
+    }
+
+
+    Console.WriteLine("--------------------");
+    Console.WriteLine("Uygulama sonlandırılıyor..");
+
+}
+
+
+
+
+// switch ile yapılan seçimi çalıştırıyoruz
 switch (secim)
 {
-    case "1":
+    case "1": // rastgele sayı bulma oyunu
         Oyun();
         break;
 
-    case "2":
+    case "2": // hesap makinesi
         HesapMakinesi();
         break;
 
-    case "3":
-        Console.WriteLine("başarılı-3");
+    case "3": // ortalama hesaplama
+        OrtalamaHesapla();
         break;
 
     default:
-        Console.WriteLine("Lütfen yukarıda yazan üçünden birini seçiniz..");
+        Console.WriteLine("Lütfen yukarıda yazan üç uygulamadan birini seçiniz!");
         Console.WriteLine(secim);
         break;
 }
