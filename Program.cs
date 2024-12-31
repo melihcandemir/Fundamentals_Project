@@ -1,13 +1,4 @@
-﻿// C# Fundamentals Project
-// Proje haftasına hoş geldiniz! Bu projede sizlerden 3 aşamalı bir uygulama geliştirmeniz isteniyor. 
-// Uygulamayı çalıştıran kullanıcıya program seçeneklerini konsol üzerinden sunarak bir tanesini seçmesini isteyiniz.
-
-// Hangi programı çalıştırmak istersiniz - 3 farklı seçenek :
-// 1 - Rastgele Sayı Bulma Oyunu
-// 2 - Hesap Makinesi
-// 3 - Ortalama Hesaplama
-
-// kodlar düzenli gözüksün diye alt alta yazdım
+﻿// kodlar düzenli gözüksün diye alt alta yazdım
 Console.WriteLine("---------------HOŞGELDİNİZ---------------");
 Console.WriteLine("Hangi programı seçmek istersiniz:");
 Console.WriteLine("1 - Rastgele Sayı Bulma Oyunu");
@@ -16,7 +7,6 @@ Console.WriteLine("3 - Ortalama Hesaplama");
 Console.Write("Seçiminiz (1 / 2 / 3): ");
 string? secim = Console.ReadLine() ?? string.Empty; // değer girilmez ise boş sayılır
 
-secim = secim.ToLower(); // girilen değerleri küçültür
 secim = secim.Trim(); // trim ile string değerin başındaki ve sonundaki boşluklar silinir
 
 
@@ -38,7 +28,7 @@ void Oyun()
     do
     {
         i++;
-        // tahminin rastgele sayı ile arasındaki büyüklük küçüklük farkını belirler
+        // tahminin ve rastgele sayı arasındaki büyüklük küçüklük farkını belirler
         if (sayi < tahmin)
         {
             Console.WriteLine("----------------");
@@ -69,9 +59,6 @@ void Oyun()
             Console.WriteLine("----------------");
             break;
         }
-            
-        
-
 
     } while(i < 4);
 
@@ -85,89 +72,79 @@ void HesapMakinesi()
 {
     Console.WriteLine("----------------------------Hesap Makinesine Hoşgeldiniz----------------------------");
     // ilk önce kullanıcıdan işlem bilgisi alarak istediği işleme göre aksiyon alınması sağlanıyor
-    Console.WriteLine("Yapmak istediğiniz işlemi seçiniz\nToplama için: +\nÇıkarma için: -\nÇarpma için: x\nBölme için: /");
-    Console.WriteLine("-------------------");
-    Console.Write("Seciminiz=>> ");
-    string? islem = Console.ReadLine();
 
-    switch (islem)
+    // tekrar işlem değişkeni
+    string tekrar = "e";
+
+    while (tekrar == "e")
     {
-        case "+":  // toplama işlemi
-            Console.WriteLine("--------------Toplama işlemini seçtiniz--------------");
-            Console.Write("İlk sayınızı giriniz: ");
-            int topla_sayi = Convert.ToInt32(Console.ReadLine());
-            Console.Write("İkinci sayınızı giriniz: ");
-            int topla_sayi1 = Convert.ToInt32(Console.ReadLine());
-            int toplam = topla_sayi + topla_sayi;
-            Console.WriteLine("Toplama sonucu: "+ toplam);
-            break;
-        
-        case "-": // çıkarma işlemi
-            Console.WriteLine("--------------Çıkarma işlemini seçtiniz--------------");
-            Console.Write("İlk sayınızı giriniz: ");
-            int cikarma_sayi = Convert.ToInt32(Console.ReadLine());
-            Console.Write("İkinci sayınızı giriniz: ");
-            int cikarma_sayi1 = Convert.ToInt32(Console.ReadLine());
-            int cikarma = cikarma_sayi - cikarma_sayi1;
-            Console.WriteLine("Çıkarma sonucu: "+ cikarma);
-            break;
+        Console.WriteLine("Yapmak istediğiniz işlemi seçiniz\nToplama için: +\nÇıkarma için: -\nÇarpma için: x\nBölme için: /");
+        Console.WriteLine("-------------------");
+        Console.Write("Seciminiz=>> ");
+        string? islem = Console.ReadLine();
 
-        case "x": // çarpma işlemi
-            Console.WriteLine("--------------Çarpma işlemini seçtiniz--------------");
-            Console.Write("İlk sayınızı giriniz: ");
-            int carpma_sayi = Convert.ToInt32(Console.ReadLine());
-            Console.Write("İkinci sayınızı giriniz: ");
-            int carpma_sayi1 = Convert.ToInt32(Console.ReadLine());
-            int carpma = carpma_sayi * carpma_sayi1;
-            Console.WriteLine("Çarpma sonucu: "+ carpma);
-            break;
+        switch (islem)
+        {
+            case "+":  // toplama işlemi
+                Console.WriteLine("--------------Toplama işlemini seçtiniz--------------");
+                Console.Write("İlk sayınızı giriniz: ");
+                int topla_sayi = Convert.ToInt32(Console.ReadLine());
+                Console.Write("İkinci sayınızı giriniz: ");
+                int topla_sayi1 = Convert.ToInt32(Console.ReadLine());
+                int toplam = topla_sayi + topla_sayi;
+                Console.WriteLine("Toplama sonucu: "+ toplam);
+                break;
+            
+            case "-": // çıkarma işlemi
+                Console.WriteLine("--------------Çıkarma işlemini seçtiniz--------------");
+                Console.Write("İlk sayınızı giriniz: ");
+                int cikarma_sayi = Convert.ToInt32(Console.ReadLine());
+                Console.Write("İkinci sayınızı giriniz: ");
+                int cikarma_sayi1 = Convert.ToInt32(Console.ReadLine());
+                int cikarma = cikarma_sayi - cikarma_sayi1;
+                Console.WriteLine("Çıkarma sonucu: "+ cikarma);
+                break;
 
-        case "/": // bölme işlemi
-            Console.WriteLine("--------------Bölme işlemini seçtiniz--------------");
-            Console.Write("Bölünecek sayınızı giriniz: ");
-            int bolunen = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Bölen sayınızı giriniz: ");
-            int bolen = Convert.ToInt32(Console.ReadLine());
-            if (bolen == 0)
-            {
-                Console.WriteLine("Bölen 0 olamaz!!");
-            }
-            else 
-            {
-                // sonucun otalama olarak tam çıkması için bölünen double çevrildi
-                double bolum = (double)bolunen / bolen; 
-                Console.WriteLine("Bölüm sonucu: "+ bolum);
-            }
-            break;
-        
-        default:
-            Console.WriteLine("Seçiminiz geçersiz. Çıkış yapılıyor...");
-            break;
+            case "x": // çarpma işlemi
+                Console.WriteLine("--------------Çarpma işlemini seçtiniz--------------");
+                Console.Write("İlk sayınızı giriniz: ");
+                int carpma_sayi = Convert.ToInt32(Console.ReadLine());
+                Console.Write("İkinci sayınızı giriniz: ");
+                int carpma_sayi1 = Convert.ToInt32(Console.ReadLine());
+                int carpma = carpma_sayi * carpma_sayi1;
+                Console.WriteLine("Çarpma sonucu: "+ carpma);
+                break;
+
+            case "/": // bölme işlemi
+                Console.WriteLine("--------------Bölme işlemini seçtiniz--------------");
+                Console.Write("Bölünecek sayınızı giriniz: ");
+                int bolunen = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Bölen sayınızı giriniz: ");
+                int bolen = Convert.ToInt32(Console.ReadLine());
+                if (bolen == 0)
+                {
+                    Console.WriteLine("Bölen 0 olamaz!!");
+                }
+                else 
+                {
+                    // sonucun otalama olarak tam çıkması için bölünen double çevrildi
+                    double bolum = (double)bolunen / bolen; 
+                    Console.WriteLine("Bölüm sonucu: "+ bolum);
+                }
+                break;
+            
+            default:
+                Console.WriteLine("Seçiminiz geçersiz. Çıkış yapılıyor...");
+                break;
+        }
+
+        Console.Write("Başka bir işlem yapmak istiyor musunuz?\n(Evet(e) / Hayır(enter)): ");
+        tekrar = Console.ReadLine() ?? string.Empty;
+        Console.WriteLine("-------------------");
     }
+
+    Console.WriteLine("Hesap makinesi kapatılıyor.");
 }
-
-// Ortalama Hesaplama
-// Kullanıcıdan birinci ders notunu girmesini isteyin.
-// Kullanıcıdan ikinci ders notunu girmesini isteyin.
-// Kullanıcıdan üçüncü ders notunu girmesini isteyin.
-// Girdiği notların ortalamasını hesaplayın ve ekrana yazdırın.
-// Notların geçerli olup olmadığını kontrol edin (0-100 aralığında olmalıdır). Geçersiz bir not girildiğinde kullanıcıya hata mesajı verin ve programı sonlandırın.
-// Ortalama notun harf karşılığını göstermek için aşağıdaki harf notu tablosunu kullanın:
-
-// 90-100: AA
-// 85-89:  BA
-// 80-84:  BB
-// 75-79:  CB +
-// 70-74:  CC +
-// 65-69:  DC +
-// 60-64:  DD +
-// 55-59:  FD +
-// 0-54:   FF
-// Programı yazarken dikkat etmeniz gereken noktalar:
-// Kullanıcı girdilerini doğru bir şekilde almak için Console.ReadLine() ve Convert.ToDouble() gibi metodları kullanın.
-// Notların geçerliliğini kontrol etmek için if yapısını kullanın.
-// Ortalama hesaplamasını doğru bir şekilde yapmak için double türünde bir değişken kullanın.
-// Harf notu tablosunu kullanarak kullanıcının aldığı ortalamaya karşılık gelen harf notunu belirleyin ve ekrana yazdırın.
 
 
 // ortalama hesaplama uygulaması
@@ -257,8 +234,6 @@ void OrtalamaHesapla()
     Console.WriteLine("Uygulama sonlandırılıyor..");
 
 }
-
-
 
 
 // switch ile yapılan seçimi çalıştırıyoruz
