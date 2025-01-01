@@ -127,14 +127,14 @@ void HesapMakinesi()
                 }
                 else 
                 {
-                    // sonucun otalama olarak tam çıkması için bölünen double çevrildi
+                    // sonucun ortalama olarak tam çıkması için bölünen double çevrildi
                     double bolum = (double)bolunen / bolen; 
                     Console.WriteLine("Bölüm sonucu: "+ bolum);
                 }
                 break;
             
             default:
-                Console.WriteLine("Seçiminiz geçersiz. Çıkış yapılıyor...");
+                Console.WriteLine("Seçiminiz geçersiz.");
                 break;
         }
 
@@ -154,7 +154,7 @@ void OrtalamaHesapla()
     
     // ortalama not değişkeni
     double ortalama_not = 0;
-    // not girişi durdurma değişkeni
+    // uygulama devamlılığı sağlama değişkeni
     int i = 0;
     // notların harf karşılığını veren metot
     string HarfNotuHesapla(double ortalama)
@@ -218,7 +218,7 @@ void OrtalamaHesapla()
         ortalama_not = (double)(not1 + not2 + not3) / 3; 
         Console.WriteLine($"Not ortalamanız: {ortalama_not}");
         Console.WriteLine("--------------------");
-        i++;
+        i++; // uygulamyı devam ettire bilmek için değişkeni artırıyorum
     }
 
     // consola harf notunu yazdıracağız
