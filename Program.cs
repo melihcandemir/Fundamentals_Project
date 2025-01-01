@@ -7,7 +7,7 @@ Console.WriteLine("3 - Ortalama Hesaplama");
 Console.Write("Seçiminiz (1 / 2 / 3): ");
 string? secim = Console.ReadLine() ?? string.Empty; // değer girilmez ise boş sayılır
 
-secim = secim.Trim(); // trim ile string değerin başındaki ve sonundaki boşluklar silinir
+secim = secim.Trim(); // trim ile değerin başındaki ve sonundaki boşluklar silinir
 
 
 // sayı bulma oyunu

@@ -333,4 +333,4 @@ Ardından uygulama sonlandırılıyor.
 Console.WriteLine("Uygulama sonlandırılıyor..");
 ```
 
-Proje bu kadar...
+**_"Buraya kadar geldiyseniz teşekkürler. Proje bu kadar..."_**
