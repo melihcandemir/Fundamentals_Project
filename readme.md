@@ -301,7 +301,7 @@ string HarfNotuHesapla(double ortalama)
         return "AA";
     else if (ortalama >= 85 && ortalama <= 89) // 85-89:  BA
         return "BA";
-    else if (ortalama >= 84 && ortalama <= 80) // 80-84:  BB
+    else if (ortalama >= 80 && ortalama <= 84) // 80-84:  BB
         return "BB";
     else if (ortalama >= 75 && ortalama <= 79) // 75-79:  CB
         return "CB";
